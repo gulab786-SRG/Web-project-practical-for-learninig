@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <title><%= title %></title>
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <style>
+h2{
+  font-family: 'Times New Roman', Times, serif;
+}
+    i.trashiconsize {
+      font-size: 60px;
+      color: red;
+    }
+
+
+    i.edit {
+      font-size: 50px;
+      color: navy;
+    }
+
+    .utext {
+      font-size: 20px;
+      color: navy;
+
+    }
+
+    .dtext {
+      font-size: 20px;
+      color: maroon;
+
+    }
+
+    .filter {
+padding: 50px 50px 50px 50px;
+      height: 100px;
+      width: 1100px;
+      border-radius: 5%;
+      margin-bottom: 50px;
+    }
+
+    .filter input {
+      color: maroon;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      width: 150px;
+    }
+
+    #contain {
+      width: 300px;
+      border: maroon 1px solid;
+      margin: 50px;
+      padding: 50px;
+      border-radius: 5%;
+    }
+
+    input {
+      background-color: aliceblue;
+      color: maroon;
+    }
+  </style>
+</head>
+
+<body>
+
+  <%if(message!=" "){%>
+    
+    <div class="alert alert-primary" role="alert">
+      <h1>Success    ! </h1><%=message%>
+       </div>
+       
+    <%}%>
+  <h2>
+    UPLOAD FILE
+  </h1>
+  <a href="/upload"> <button class="btn btn-primary">upload Page</button></a>
+    <h1>Filter  Form</h1>
+
+  <div class="filter">
+    <form method="POST" action="/a">
+      <label for=""> NAME</label>
+      <input type="text" name="fname" id="" class="form-control">
+
+      <label for="">TYPE</label>
+      <input type="text" class="form-control" name="ftype">
+
+      <label for=""> HOURS</label>
+      <input type="number" name="fhours" id="" class="form-control">
+
+      <label for=""> SALARY</label>
+      <input type="number" name="fsalary" id="" class="form-control">
+      <button class="btn btn-primary" type="submit"> Submit</button>
+
+    </form>
+  </div>
+
+ 
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">NAME</th>
+        <th scope="col">TYPE</th>
+        <th scope="col">HOUR</th>
+        <th scope="col">SALARY</th>
+        <th scope="col">ACTIONS</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <%data.forEach(function(item){%>
+      <tr>
+        <td><%=item.name%></td>
+        <td><%=item.type%></td>
+        <td><%=item.hours%></td>
+        <td><%=item.salary%></td>
+        <td>
+         
+          <a href="/delete/<%=item._id%>">
+            <i class="fa fa-trash trashiconsize">
+              <p class="dtext"> Delete </p>
+            </i> 
+            
+          </a>
+          
+          
+          <a href="/edit/<%=item._id%>">
+            <i class="fa fa-edit edit">
+              <p class="utext"> Update </p>
+            </i> </a>
+
+        </td>
+      </tr>
+      <% })%>
+
+
+    </tbody>
+  </table>
+  <div id="contain">
+    <form method="POST" action="/">
+      <div class="form-group">
+        <label>NAME</label>
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label>TYPE</label>
+        <input type="text" name="type" class="form-control" id="exampleInputPassword1">
+      </div>
+
+      <div class="form-group">
+        <label>HOUR</label>
+        <input type="number" name="hours" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label>SALARY</label>
+        <input type="number" name="salary" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+
+</html>
